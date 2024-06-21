@@ -1,0 +1,4 @@
+[submodule "themes/roxo"]
+	path = themes/roxo
+	url = git@gitee.com:rocksolid-frontend/roxo-hugo.git
+  branch = blog.rocksolid.work
