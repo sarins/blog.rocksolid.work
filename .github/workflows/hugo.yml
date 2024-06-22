@@ -46,7 +46,7 @@ jobs:
       - name: Checkout submodule roxo
         uses: actions/checkout@v4
         with:
-          repository: https://gitee.com/rocksolid-frontend/roxo-hugo.git
+          repository: sarins/roxo-hugo
           ref: blog.rocksolid.work
           path: themes/roxo
       - name: Setup Pages
