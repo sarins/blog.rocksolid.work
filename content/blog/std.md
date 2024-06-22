@@ -7,6 +7,7 @@ categories = ['Category C中文A', 'Category B', 'Category C']
 series = ['Series A', 'Series B', 'Series C']
 tags = ['Tag-A', 'Tag B', 'Tag C']
 type = 'blog'
+draft = true
 +++
 
 ---

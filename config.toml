@@ -56,7 +56,11 @@ hasCJKLanguage = true
     lineNos = true
     lineNumbersInTable = false
     noClasses = true
-    style = 'solarized-light'
+    # style = 'catppuccin-latte'
+    style = 'emacs'
+    # style = 'rose-pine-dawn'
+    # style = 'manni'
+    # style = 'solarized-light'
     tabWidth = 2
   [markup.tableOfContents]
     endLevel = 3
@@ -83,11 +87,11 @@ hasCJKLanguage = true
     weight  = 4
   [[menu.nav]]
     name    = "关于"
-    url     = "about-us"
+    url     = "about"
     weight  = 5
   [[menu.nav]]
     name    = "Buy me coffee"
-    url     = "about-us/contact-us"
+    url     = "buy-me-coffee"
     weight  = 6
 
 [taxonomies]
@@ -95,24 +99,24 @@ hasCJKLanguage = true
   series = 'series'
   tag = 'tags'
 
+[services]
+  # Google Analitycs
+  [services.googleAnalytics]
+    ID = 'G-692VCFTQRM'
+
 # Site Params
 [params]
   logo = "images/logo-orange.png"
   favicon = "images/logo-square.png"
   name = "顽石@RockSolid"
-  dateFormat = "26 FEB 1994"
   # Meta data
   description = "The RockSolid Work Blog"
   author = "RockSolid"
-  # Google Analitycs
-  googleAnalitycsID = "G-3F5Y9GQ18C"
 
   # Site Consts
-  prevItem = "返回"
-  prevItemEn = "Prev"
-  nextItem = "继续"
-  nextItemEn = "Next"
-  readMore = "深入了解▸"
+  [params.const]
+    prev = "Prev"
+    next = "Next"
 
   # Banner Section
   [params.banner]
@@ -120,73 +124,11 @@ hasCJKLanguage = true
     title               = "致虚极 守静笃 万物并作 吾以观复"
     slogan               = "MAKE SOMETHINGS & HAVING FUN"
 
-  [params.features]
-    enable    = true
-    title     = "优势产品"
-    subtitle  = "数年的<span>深耕</span>使我们更能深入<span>客户需求</span>，与此同时产品也更加贴合<span>业务场景</span>，相信我们会成为您的<span>好助手</span>。"
-
-  [params.footer]
-    # Footer Contact Info
-    [params.footer.sales]
-      title   = "敬请咨询"
-      tel   = "+86 17791800063"
-      email   = "service@rock-solid.cn"
-    # Footer Sitemap
-    [params.footer.sitemap]
-      title   = "网站地图"
-      [[params.footer.sitemap.link]]
-        name = "解决方案"
-        url  = "solutions"
-      [[params.footer.sitemap.link]]
-        name = "优势产品"
-        url  = "products"
-      [[params.footer.sitemap.link]]
-        name = "信息服务"
-        url  = "services"
-      [[params.footer.sitemap.link]]
-        name = "客户案例"
-        url  = "cases"
-      [[params.footer.sitemap.link]]
-        name = "关于我们"
-        url  = "about-us"
-    # Footer Resources
-    [params.footer.res]
-      title   = "投资与赞助"
-      [[params.footer.res.link]]
-        name = "PLUG AND PLAY"
-        url  = "https://www.pnpchina.com/"
-      [[params.footer.res.link]]
-        name = "中国电信"
-        url  = "http://www.chinatelecom.com.cn/"
-      [[params.footer.res.link]]
-        name = "中国通信服务"
-        url  = "https://www.chinaccs.com.hk/"
-      #[[params.footer.res.link]]
-      #  name = "顽石信息科技"
-      #  url  = "https://www.rock-solid.cn"
-    # Footer Resources
-    [params.footer.links]
-      title   = "友情链接"
-      [[params.footer.links.item]]
-        name = "Novartis"
-        url  = "https://www.novartis.com/"
-      [[params.footer.links.item]]
-        name = "Cargomatic"
-        url  = "https://cargomatic.com/"
-      [[params.footer.links.item]]
-        name = "陕西省体育局"
-        url  = "http://tyj.shaanxi.gov.cn/"
-      [[params.footer.links.item]]
-        name = "中国棒球协会"
-        url  = "http://baseball.sport.org.cn/"
-      [[params.footer.links.item]]
-        name = "小马世界少棒垒联盟"
-        url = "https://www.ponychina.cn/"
-
-  # Siteinfo
-  [params.siteinfo]
-    # Copyright, left + datetime + right
-    copyright_left = "Copyright © 2016 - "
-    copyright_right = " RockSolid. All Rights Reserved. 顽石信息科技 版权所有"
+  # Copyright
+  [params.copyright]
+    # Copyright, left + datetime + right, 
+    copyright_left = "Copyright © 2013-"
+    copyright_right = " RockSolid. All Rights Reserved. 顽石信息科技 版权所有. 版权许可 "
+    license = "<a href=\"https://creativecommons.org/licenses/by-nc-nd/3.0/cn/\" target=\"_blank\">CC BY-NC-ND 3.0 CN</a>"
     # ICP related
     icp = "陕ICP备15008230号-1"

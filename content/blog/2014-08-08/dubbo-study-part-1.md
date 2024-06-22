@@ -48,7 +48,7 @@ type = 'blog'
 
 ### 2.1. 远程方法调用(RMI)通用模型
 
-![](../images/1.jpg)
+![1](../images/1.jpg "RMI调用示意图")
 
 * 服务器在哪？ 如何找到服务器？
 * 请求和回复中包含哪些内容？ 
@@ -65,7 +65,7 @@ type = 'blog'
 
 ### 3.1. Dubbo服务的结构
 
-![](../images/dubbo-architecture.jpg)
+![2](../images/dubbo-architecture.jpg)
 
 - - -
 
@@ -437,19 +437,19 @@ Choose a number or apply filter (format: [groupId:]artifactId, case sensitive co
 
 ###### [Step-1]选择导入工程类型为“Existing Maven Projects”
 
-![](../images/e_imp_maven_project.png)
+![3](../images/e_imp_maven_project.png)
 
 ###### [Step-2]选择导入工程的根文件夹，Eclipse会自动扫描出工程结构，如图所示
 
-![](../images/e_imp_maven_project_2.png)
+![4](../images/e_imp_maven_project_2.png)
 
 ###### [Step-3]选取Maven插件与Eclipse的映射关联
 
-![](../images/e_imp_maven_project_3.png)
+![5](../images/e_imp_maven_project_3.png)
 
 ###### [Step-4]工程导入成功后应如下图所示
 
-![](../images/e_imp_maven_project_finished.png)
+![6](../images/e_imp_maven_project_finished.png)
 
 ###### [注意]可能需要手工导入ojdbc文件到本地maven库中。
 
@@ -552,7 +552,7 @@ p-name-service-impl
 
 ###### Spring配置原则，Spring配置文件结构如下：
 
-![](../images/e_P_biz_struct.png)
+![7](../images/e_P_biz_struct.png)
 
 ```
 spring-common.xml 通用、公共组件配置。
@@ -676,19 +676,19 @@ start.bat
 
 ###### 启动Eclipse，打开Debug配置界面，并选择“Remote Java Application”， 然后点击“New”新建一个远程调式配置。
 
-![](../images/e_select_debug_rmt_app.png)
+![8](../images/e_select_debug_rmt_app.png)
 
 ###### 打开远程调试配置界面，选择“Connect”选项卡，填写基本信息。
 
-![](../images/e_type_debug_info.png)
+![9](../images/e_type_debug_info.png)
 
 ###### 选择“Source”选项卡，选配置目源码攫取路径。
 
-![](../images/e_select_debug_src.png)
+![10](../images/e_select_debug_src.png)
 
 ###### 选择“Connect”选项卡，查看配置信息并点击“Apply”保存，点击“Debug”启动附着调试（这里假设被调试程序已经于前边步骤启动完毕）
 
-![](../images/e_type_debug_info.png)
+![11](../images/e_type_debug_info.png)
 
 
 
