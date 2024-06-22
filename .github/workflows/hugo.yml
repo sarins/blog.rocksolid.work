@@ -42,7 +42,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
+      - name: Checkout submodule roxo
+        uses: actions/checkout@v4
+        with:
+          repository: https://gitee.com/rocksolid-frontend/roxo-hugo.git
+          ref: blog.rocksolid.work
+          path: themes/roxo
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
