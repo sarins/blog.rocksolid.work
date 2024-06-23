@@ -1,8 +1,8 @@
 +++
 title = 'Prophet 快速开始'
-subtitle = 'Prophet quick start'
+subtitle = 'Prophet Quick Start'
 brief = ''
-date = 2024-06-10
+date = 2024-06-10T00:00:01
 categories = ['Prophet', 'Anaconda']
 series = ['Prophet']
 tags = ['Prophet', 'Anaconda', 'Docker', 'Python']
@@ -106,7 +106,7 @@ You can plot the forecast by calling the `Prophet.plot` method and passing in 
 fig1 = m.plot(forecast)
 ```
 
-![fig1](../output_12_0.png)
+![fig1 = m.plot(forecast)](../output_12_0.png)
 
 If you want to see the forecast components, you can use the `Prophet.plot_components` method. By default you’ll see the trend, yearly seasonality, and weekly seasonality of the time series. If you include holidays, you’ll see those here, too.
 
@@ -117,7 +117,7 @@ If you want to see the forecast components, you can use the `Prophet.plot_compo
 fig2 = m.plot_components(forecast)
 ```
 
-![fig2](../output_14_0.png)
+![fig2 = m.plot_components(forecast)](../output_14_0.png)
 
 An interactive figure of the forecast and components can be created with plotly. You will need to install plotly 4.0 or above separately, as it will not by default be installed with prophet. You will also need to install the `notebook` and `ipywidgets` packages.
 

@@ -2,7 +2,7 @@
 title = 'Facebook Prophet Docker环境准备工作'
 subtitle = 'Facebook Prophet Docker environment preparation'
 brief = ''
-date = 2024-06-10
+date = 2024-06-10T00:00:00
 categories = ['Prophet', 'Anaconda']
 series = ['Prophet']
 tags = ['Prophet', 'Anaconda', 'Docker', 'Python']
