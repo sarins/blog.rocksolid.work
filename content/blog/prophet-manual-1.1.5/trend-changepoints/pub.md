@@ -2,7 +2,7 @@
 title = 'Prophet 趋势转折点'
 subtitle = 'Prophet Trend Changepoints'
 brief = ''
-date = 2024-06-11T00:00:03
+date = 2024-06-10T00:00:03
 categories = ['Prophet', 'Anaconda']
 series = ['Prophet']
 tags = ['Prophet', 'Anaconda', 'Docker', 'Python']

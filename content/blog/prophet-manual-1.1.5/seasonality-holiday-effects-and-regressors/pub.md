@@ -2,7 +2,7 @@
 title = 'Prophet 季节性、节日效应和回归量'
 subtitle = 'Prophet Seasonality, Holiday Effects, And Regressors'
 brief = ''
-date = 2024-06-11T00:00:04
+date = 2024-06-10T00:00:04
 categories = ['Prophet', 'Anaconda']
 series = ['Prophet']
 tags = ['Prophet', 'Anaconda', 'Docker', 'Python']
