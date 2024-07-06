@@ -91,6 +91,7 @@ ENV EDITOR="nano"
 ### 2.2. Build image
 
 ```bash
+# Image size may around 1GB
 docker build -t rocksolid-micromamba:1.5.8 .
 ```
 
@@ -104,4 +105,65 @@ docker run -d \
            --name rocksolid-micromamba-1.5.8 \
            -p 28888:8888 \
            rocksolid-micromamba:1.5.8 jupyter-lab --no-browser --ip=0.0.0.0
+```
+
+---
+
+## 3. Micromamba
+
+### 3.1. Environment operations
+
+```bash
+# Create
+micromamba create -n autogluon_env -c conda-forge
+# Activation
+micromamba activate autogluon_env
+# Deactivation
+micromamba deactivate
+# Remove
+micromamba env remove -n autogluon_env
+```
+
+### 3.2. Install packages for environment
+
+```bash
+# Install some packages for environemnt autogluon_env
+micromamba install -y -n autogluon_env -c conda-forge \
+           python=3.11 \
+           conda \
+           jupyterlab=4.1.6 \
+           ipywidgets \
+           jupyterlab-lsp \
+           python-lsp-server \
+           matplotlib \
+           pandas=2.1.4 \
+           numpy=1.26.4
+micromamba clean --all --yes
+```
+
+### 3.3. Startup jupyterlab on Specified micromamba environment
+
+```bash
+# Access jupyterlab from web browser http://localhost:28888
+jupyter-lab --no-browser --ip=0.0.0.0
+```
+
+---
+
+## 3. Use Amazon Sagemaker fat image
+
+> Get images from [**AWS ECR Gallery repository**](https://gallery.ecr.aws/sagemaker/sagemaker-distribution)
+
+```bash
+# Image size over than 2.5GB
+docker pull public.ecr.aws/sagemaker/sagemaker-distribution:1.9.0-cpu
+```
+
+### 3.1. Startup container
+
+```bash
+docker run -d \
+           --name sagemaker-distribution-1.9.0 \
+           -p 28888:8888 \
+           public.ecr.aws/sagemaker/sagemaker-distribution:1.9.0-cpu jupyter-lab --no-browser --ip=0.0.0.0
 ```
