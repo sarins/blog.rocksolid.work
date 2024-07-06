@@ -53,6 +53,8 @@ docker run -d --name miniconda-jupyter-prophet -p 59900:9900 miniconda-jupyter-p
 ```bash
 # Install deps inside of container [this will be move into Dockerfile]
 conda install -c conda-forge plotly --solver=classic
+# Fixed issue of conda command always tip error message like "Error while loading conda entry point: conda-libmamba-solver (libarchive.so.19: cannot open shared object file: No such file or directory)"
+conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive
 ```
 
 > Make sure all of dependencies coming from same channel of pip

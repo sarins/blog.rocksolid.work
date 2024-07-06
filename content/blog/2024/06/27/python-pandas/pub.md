@@ -1,5 +1,5 @@
 +++
-title = 'Python Pandas包'
+title = 'Python Pandas'
 subtitle = 'Python Pandas'
 brief = ''
 date = 2024-06-27T00:00:00
@@ -34,7 +34,7 @@ conda install conda-forge::pandas
 df_db['ds'] = pd.to_datetime(df_db['ds'], format='%Y%m%d')
 ```
 
-### 2.2. Refactoring DateTime series
+### 2.2. Re-Index DateTime series
 
 ```python
 import pandas as pd
