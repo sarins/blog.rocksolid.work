@@ -25,10 +25,10 @@ draft = true
 ## 1.2. EDA 与 Classical Analysis 工作步骤比较
 
 > **应用传统统计分析方法的数据分析步骤**
-> - 提出问题 Problem -> 准备数据 Data => 建模 Model => 分析 Analysis => 得出结论 Conclusions
+> - 提出问题 Problem &rarr; 准备数据 Data &rarr; 建模 Model &rarr; 分析 Analysis &rarr; 得出结论 Conclusions
 
 > **应用探索性数据分析方法的数据分析步骤**
-> - 提出问题 Problem => 准备数据 Data => 分析 Analysis => 建模 Model => 得出结论 Conclusions
+> - 提出问题 Problem &rarr; 准备数据 Data &rarr; 分析 Analysis &rarr; 建模 Model &rarr; 得出结论 Conclusions
 
 ---
 
