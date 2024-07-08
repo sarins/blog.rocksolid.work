@@ -28,19 +28,7 @@ USER $MAMBA_USER
 
 WORKDIR "/home/${ROCKSOLID_USER}"
 
-# Base python version will be 3.11
-RUN micromamba install -y -n base -c conda-forge \
-               python=3.11 \
-               conda \
-               jupyterlab=4.1.6 \
-               ipywidgets \
-               jupyterlab-lsp \
-               python-lsp-server \
-               matplotlib \
-               pandas=2.1.4 \
-               numpy=1.26.4 \
-               && \
-    micromamba clean --all --yes
+COPY global-gitconfig /home/${ROCKSOLID_USER}/.gitconfig
 
 ENV SHELL=/bin/bash
 ENV EDITOR="nano"

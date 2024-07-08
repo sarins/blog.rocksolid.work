@@ -1,0 +1,14 @@
+[user]
+        name = Axl Zhao
+        email = axl.zhao@163.com
+[alias]
+        st = status
+        co = checkout
+[core]
+        autocrlf = input
+[pull]
+        rebase = false
+[init]
+        defaultBranch = master
+[http]
+        postBuffer = 52428800
