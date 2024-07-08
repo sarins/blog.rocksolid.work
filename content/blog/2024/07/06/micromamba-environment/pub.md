@@ -197,45 +197,58 @@ jupyter-lab --no-browser --ip=0.0.0.0
 > Step-1. Make docker image by clean version Dockerfile as above
 ```bash
 # docker building
-docker build -t rocksolid-micromamba-clean:1.5.8 -f ./Dockerfile-clean
+docker build -t rocksolid-micromamba-clean:1.5.8 -f ./Dockerfile-clean .
 ```
 
 > Step-2. Startup container
 ```bash
 # docker run
-docker run -d -p 38888:8888 rocksolid-micromamba-clean:1.5.8 /bin/bash
+docker run -d \
+           --name rocksolid-micromamba-1.5.8 \
+           -p 38888:8888 \
+           rocksolid-micromamba-clean:1.5.8 /bin/bash
 ```
 
 > Step-3. Working in the container
 ```bash
 # Create autogluon environment of micromamba
-micromamba create -n autogluon-env -c conda-forge
+micromamba create -n autogluon-works -c conda-forge
 # Activation
-micromamba activate autogluon-env
+micromamba activate autogluon-works
 # Install dependancies
 micromamba install -c conda-forge \
            python=3.11 \
            autogluon=1.1.1 \
+           shap \
            dask \
            matplotlib \
            pandas \
            numpy \
            jupyterlab \
            ipywidgets \
+           jupyterlab-git \
            jupyterlab-lsp \
-           python-lsp-server
+           python-lsp-server \
+           jupyter-dash
+           # jupyter-server-proxy
 # Caused by working dir at /home/rocksolid
 # Optional, gen ssh key
 ssh-keygen -t ed25519 -C "SSH-Key@micromamba.docker"
 # Checkout git repo
 git clone git@xx.com:xx/xx.git
 # Startup jupyterlab
-jupyter-lab --no-browser --ip=0.0.0.0
+jupyter-lab --notebook-dir ~/ --no-browser --ip=0.0.0.0
 ```
 
 > Step-4. Access jupyterlab from web browser
 
 - Install jupyterlab-git plugins, make easily using git from jupyterlab interface.
+
+> Step-5. Restart container
+```bash
+# When terminated bash by exit command, the container will be close, using below command for restart it.
+docker start -i rocksolid-micromamba-1.5.8
+```
 
 ---
 

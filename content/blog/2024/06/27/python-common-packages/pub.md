@@ -40,6 +40,17 @@ ax.plot([1, 2, 3, 4], [1, 4, 2, 3])  # Plot some data on the Axes.
 # plt.show()                           # Show the figure.
 ```
 
+#### 1.1.3. Pie Example
+```python
+# import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+import numpy as np
+%matplotlib inline # Inline mode
+
+fig, ax = plt.subplots()             # Create a figure containing a single Axes.
+ax.pie([1,2,3], labels = ['A', 'B', 'C'], autopct='%1.1f%%')
+```
+
 ---
 
 ### 1.2. Seaborn
