@@ -93,7 +93,7 @@ ENV EDITOR="nano"
 ### 3.2. Build image
 
 ```bash
-# Image size may around 1GB
+# Image size may around 2GB
 docker build -t rocksolid-micromamba:1.5.8 .
 ```
 
@@ -196,7 +196,7 @@ jupyter-lab --no-browser --ip=0.0.0.0
 
 > Step-1. Make docker image by clean version Dockerfile as above
 ```bash
-# docker building
+# Image size may around 750MB
 docker build -t rocksolid-micromamba-clean:1.5.8 -f ./Dockerfile-clean .
 ```
 
