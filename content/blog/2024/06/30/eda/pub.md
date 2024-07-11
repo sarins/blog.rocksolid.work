@@ -7,7 +7,6 @@ categories = ['Machine Learning', 'Math']
 series = ['Machine Learning']
 tags = ['Machine Learning', 'Math', 'Statistics']
 type = 'blog'
-draft = true
 +++
 
 ---
