@@ -33,8 +33,8 @@ hasCJKLanguage = true
       [markup.goldmark.extensions.passthrough]
         enable = true
         [markup.goldmark.extensions.passthrough.delimiters]
-          block = []
-          inline = []
+          block = [['$$', '$$']]
+          inline = [['$$', '$$']]
     [markup.goldmark.parser]
       autoHeadingID = true
       autoHeadingIDType = 'github'
@@ -112,6 +112,7 @@ hasCJKLanguage = true
   # Meta data
   description = "The RockSolid Work Blog"
   author = "RockSolid"
+  math = true
 
   # Site Consts
   [params.const]
