@@ -203,7 +203,7 @@ docker build -t rocksolid-micromamba-clean:1.5.8 -f ./Dockerfile-clean .
 > Step-2. Startup container
 ```bash
 # docker run
-docker run -d \
+docker run -ti \
            --name rocksolid-micromamba-1.5.8 \
            -p 38888:8888 \
            rocksolid-micromamba-clean:1.5.8 /bin/bash
