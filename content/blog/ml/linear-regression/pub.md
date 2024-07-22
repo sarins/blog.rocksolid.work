@@ -15,3 +15,9 @@ draft = true
 ## 附
 
 > matplotlib is lib of plot of python
+
+$$ \sqrt{ x^2 + y^2 } $$
+
+$$a^*=x-b^*$$
+
+$$ a^*=x-b^* $$
