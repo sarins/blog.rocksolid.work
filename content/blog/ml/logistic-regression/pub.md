@@ -2,7 +2,7 @@
 title = '对率回归'
 subtitle = 'Logistic Regression'
 brief = ''
-date = 2024-06-26T00:00:02
+date = 2022-05-01T00:00:02
 categories = ['Machine Learning', 'Math', 'Logistic Regression']
 series = ['Machine Learning']
 tags = ['Machine Learning', 'Math', 'Logistic Regression', 'Python', 'Scikit-Learn', 'Sklearn']
