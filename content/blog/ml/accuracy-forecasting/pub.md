@@ -1,11 +1,11 @@
 +++
-title = '梯度提升决策树'
-subtitle = 'Gradient Boosting Decision Tree'
+title = '精度（准确性）预测'
+subtitle = 'Accuracy Forecating'
 brief = ''
-date = 2022-05-01T00:00:03
+date = 2022-05-01T00:00:04
 categories = ['Machine Learning', 'Math', 'Plot', 'Algorithm']
 series = ['Machine Learning', 'Algorithm']
-tags = ['Python', 'Machine Learning', 'Math', 'Plot', 'Algorithm', 'GBDT']
+tags = ['Python', 'Machine Learning', 'Math', 'Plot', 'Algorithm', 'Accuracy', 'Forecating']
 type = 'blog'
 draft = true
 +++
