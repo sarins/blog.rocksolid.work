@@ -31,7 +31,6 @@ docker pull mambaorg/micromamba:1.5.8-jammy-cuda-11.8.0
 > 2. Use the ‘shell’ form of the RUN command
 > 3. More detail will be found in [**Running commands in Dockerfile within the conda environment**](https://micromamba-docker.readthedocs.io/en/latest/quick_start.html#running-commands-in-dockerfile-within-the-conda-environment)
 > 4. About how to making smaller images will be found in [**Deploying conda environments in (Docker) containers - how to do it right**](https://uwekorn.com/2021/03/01/deploying-conda-environments-in-docker-how-to-do-it-right.html)
-
 ---
 
 ## 3. Create customized image based on Micromamba image
@@ -63,7 +62,7 @@ RUN apt-get update && apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata krb5-user libkrb5-dev libsasl2-dev libsasl2-modules && \
     chmod g+w /etc/passwd && \
     echo "ALL    ALL=(ALL)    NOPASSWD:    ALL" >> /etc/sudoers && \
-    touch /etc/krb5.conf.lock && chown ${NB_USER}:${MAMBA_USER} /etc/krb5.conf* && \
+    touch /etc/krb5.conf.lock && chown ${ROCKSOLID_USER}:${MAMBA_USER} /etc/krb5.conf* && \
     apt clean
 
 USER $MAMBA_USER
@@ -109,7 +108,9 @@ docker run -d \
            rocksolid-micromamba:1.5.8 jupyter-lab --no-browser --ip=0.0.0.0
 ```
 
-### 3.4. Dockerfile for clean Micromamba
+## 4. Create clean/SSH customized image based on Micromamba image
+
+### 4.1. Dockerfile for clean Micromamba
 
 ```dockerfile
 # Base micromamba image
@@ -131,12 +132,12 @@ ENV MAMBA_USER=$ROCKSOLID_USER
 ENV USER=$ROCKSOLID_USER
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends sudo wget curl unzip git build-essential nano less ssh && \
+    apt-get install -y --no-install-recommends sudo wget curl unzip git build-essential nano less ssh openssh-server net-tools iputils-ping && \
     # We just install tzdata below but leave default time zone as UTC. This helps packages like Pandas to function correctly.
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata krb5-user libkrb5-dev libsasl2-dev libsasl2-modules && \
     chmod g+w /etc/passwd && \
     echo "ALL    ALL=(ALL)    NOPASSWD:    ALL" >> /etc/sudoers && \
-    touch /etc/krb5.conf.lock && chown ${NB_USER}:${MAMBA_USER} /etc/krb5.conf* && \
+    touch /etc/krb5.conf.lock && chown ${ROCKSOLID_USER}:${MAMBA_USER} /etc/krb5.conf* && \
     apt clean
 
 USER $MAMBA_USER
@@ -149,13 +150,77 @@ ENV SHELL=/bin/bash
 ENV EDITOR="nano"
 ```
 
-> [Download Dockerfile-clean](../Dockerfile-clean)
-
+> 1. [Download Dockerfile-clean](../Dockerfile-clean)
+> 2. [Download global-gitconfig](../global-gitconfig)
 ---
 
-## 4. Micromamba
+### 4.2. Dockerfile for SSH Miniconda
 
-### 4.1. Environment operations
+```dockerfile
+# Base miniconda image
+FROM continuumio/miniconda3:24.9.2-0
+
+RUN apt-get update -q && \
+    apt-get upgrade -y && \
+    apt-get install -q -y --no-install-recommends \
+    sudo \
+    wget \
+    curl \
+    unzip \
+    git \
+    build-essential \
+    nano \
+    less \
+    ssh \
+    openssh-server \
+    net-tools \
+    iputils-ping && \
+    apt clean
+
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+# Reset password for root user
+RUN echo "root:root" | chpasswd
+
+RUN mkdir /var/run/sshd
+
+WORKDIR "/root"
+
+COPY global-gitconfig /root/.gitconfig
+
+CMD ["sh", "-c", "sudo /usr/sbin/sshd -D"]
+```
+
+> 1. [Download Dockerfile-miniconda-ssh](../Dockerfile-miniconda-ssh)
+> 2. [Download global-gitconfig](../global-gitconfig)
+---
+
+### 4.3. Build image
+
+```bash
+# Clean image
+docker build -t rocksolid-micromamba-clean:1.5.8 -f ./Dockerfile-clean .
+# SSH image, SSH port at 22, it will automated startup, because micromamba base image issue, so using the miniconda base image.
+docker build -t rocksolid-miniconda-ssh:24.9.2 -f ./Dockerfile-miniconda-ssh .
+```
+
+### 4.3. Startup container
+
+```bash
+# Shell works
+docker run -ti --rm -p 28888:8888 rocksolid-micromamba:1.5.8 /bin/bash
+# SSH image
+docker run -tid \
+           --name rocksolid-miniconda-ssh-24.9.2 \
+           -p 18822:22 \
+           -p 18888:8888 \
+           rocksolid-miniconda-ssh:24.9.2
+```
+
+## 5. Micromamba
+
+### 5.1. Environment operations
 
 ```bash
 # Create
@@ -168,7 +233,7 @@ micromamba deactivate
 micromamba env remove -n autogluon_env
 ```
 
-### 4.2. Install packages for environment
+### 5.2. Install packages for environment
 
 ```bash
 # Install some packages for environemnt autogluon_env
@@ -185,14 +250,14 @@ micromamba install -y -n autogluon_env -c conda-forge \
 micromamba clean --all --yes
 ```
 
-### 4.3. Startup jupyterlab on Specified micromamba environment
+### 5.3. Startup jupyterlab on Specified micromamba environment
 
 ```bash
 # Access jupyterlab from web browser http://localhost:28888
 jupyter-lab --no-browser --ip=0.0.0.0
 ```
 
-### 4.4. Complete example for making Autogluon environment
+### 5.4. Complete example for making Autogluon environment
 
 > Step-1. Make docker image by clean version Dockerfile as above
 ```bash
@@ -252,7 +317,7 @@ docker start -i rocksolid-micromamba-1.5.8
 
 ---
 
-## 5. Use Amazon Sagemaker fat image
+## 6. Use Amazon Sagemaker fat image
 
 > Get images from [**AWS ECR Gallery repository**](https://gallery.ecr.aws/sagemaker/sagemaker-distribution)
 
@@ -261,7 +326,7 @@ docker start -i rocksolid-micromamba-1.5.8
 docker pull public.ecr.aws/sagemaker/sagemaker-distribution:1.9.0-cpu
 ```
 
-### 5.1. Startup container
+### 6.1. Startup container
 
 ```bash
 docker run -d \

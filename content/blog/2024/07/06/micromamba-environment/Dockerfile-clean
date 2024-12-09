@@ -21,7 +21,7 @@ RUN apt-get update && apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata krb5-user libkrb5-dev libsasl2-dev libsasl2-modules && \
     chmod g+w /etc/passwd && \
     echo "ALL    ALL=(ALL)    NOPASSWD:    ALL" >> /etc/sudoers && \
-    touch /etc/krb5.conf.lock && chown ${NB_USER}:${MAMBA_USER} /etc/krb5.conf* && \
+    touch /etc/krb5.conf.lock && chown ${ROCKSOLID_USER}:${MAMBA_USER} /etc/krb5.conf* && \
     apt clean
 
 USER $MAMBA_USER

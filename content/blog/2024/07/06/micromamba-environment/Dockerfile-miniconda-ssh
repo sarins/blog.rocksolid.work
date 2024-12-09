@@ -1,0 +1,31 @@
+FROM continuumio/miniconda3:24.9.2-0
+
+RUN apt-get update -q && \
+    apt-get upgrade -y && \
+    apt-get install -q -y --no-install-recommends \
+    sudo \
+    wget \
+    curl \
+    unzip \
+    git \
+    build-essential \
+    nano \
+    less \
+    ssh \
+    openssh-server \
+    net-tools \
+    iputils-ping && \
+    apt clean
+
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+RUN echo "root:root" | chpasswd
+
+RUN mkdir /var/run/sshd
+
+WORKDIR "/root"
+
+COPY global-gitconfig /root/.gitconfig
+
+CMD ["sh", "-c", "sudo /usr/sbin/sshd -D"]
