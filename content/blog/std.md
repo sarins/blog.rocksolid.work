@@ -1,7 +1,7 @@
 +++
 title = '标准模版'
 subtitle = 'Standard Template Standard Template Standard Template Standard Template Standard Template'
-brief = '1111'
+brief = ''
 date = 2024-05-20
 categories = ['Category C中文A', 'Category B', 'Category C']
 series = ['Series A', 'Series B', 'Series C']
